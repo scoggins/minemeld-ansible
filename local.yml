@@ -1,5 +1,5 @@
 - name: minemeld playbook
-  hosts: 127.0.0.1
+  hosts: 127.0.0.1 minemeld-dev-1604
   connection: local
   become: true
   become_method: sudo
@@ -14,6 +14,17 @@
   # core_repo: "https://github.com/jtschichold/minemeld-core.git"
   # prototype_repo: "https://github.com/jtschichold/minemeld-node-prototypes.git"
   # webui_repo: "https://github/jtschichold/minemeld-webui.git"
+
+  pre_tasks:
+    - name: "Install required packages"
+      apt:
+        name: "{{ item }}"
+      with_items:
+        - python-setuptools
+        - python-pip
+        - gcc
+        - libffi-dev
+        - libssl-dev
 
   roles:
   - infrastructure
