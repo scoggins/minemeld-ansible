@@ -5,7 +5,27 @@
     clone: yes
     dest: "{{webui_repo_directory}}"
     version: "{{minemeld_version}}"
+  when: vagrant.stat.exists == False
 
+- name: minemeld-core repo symlink
+  file:
+    src: "/vagrant/code/minemeld-webui"
+    dest: "{{webui_repo_directory}}"
+    state: link
+    owner: minemeld
+    group: minemeld
+  when: vagrant.stat.isdir is defined and vagrant.stat.isdir
+
+- name: Change github ssh to https
+  git_config:
+    name: "url.\"https://github.com/\".insteadOf"
+    value: "git@github.com:"
+    scope: global
+- name: Change github git:// to https://
+  git_config:
+    name: "url.\"https://\".insteadOf"
+    value: "git://"
+    scope: global
 - name: nodeenv
   pip: name=nodeenv
 - name: minemeld nodeenv

@@ -6,6 +6,14 @@
     - "{{ ansible_distribution }}.yml"
 
 # include distribution tasks
+- name: "Check for Vagrant"
+  stat:
+    path: /vagrant
+  register: vagrant
+
+- debug: msg="We're in Vagrant, lets rock"
+  when: vagrant.stat.isdir is defined and vagrant.stat.isdir
+
 - name: include pre-task based on distribution
   include: "roles/minemeld/tasks/{{distribution_pre_task}}.yml"
   when: distribution_pre_task is defined

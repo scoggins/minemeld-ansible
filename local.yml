@@ -1,8 +1,8 @@
 - name: minemeld playbook
   hosts: 127.0.0.1 minemeld-dev-1604
   connection: local
-  become: true
   become_method: sudo
+  become: true
 
   vars:
     minemeld_version: develop
@@ -16,6 +16,10 @@
   # webui_repo: "https://github/jtschichold/minemeld-webui.git"
 
   pre_tasks:
+    - name: "Check for Vagrant"
+      stat:
+        path: /vagrant
+      register: vagrant
     - name: "Install required packages"
       apt:
         name: "{{ item }}"
@@ -25,6 +29,7 @@
         - gcc
         - libffi-dev
         - libssl-dev
+      when: vagrant.stat.isdir is defined and vagrant.stat.isdir
 
   roles:
   - infrastructure

@@ -4,6 +4,17 @@
     clone: yes
     dest: "{{prototypes_repo_directory}}/minemeld-node-prototypes"
     version: "{{minemeld_version}}"
+  when: vagrant.stat.exists == False
+
+- name: minemeld-node-prototypes repo symlink
+  file:
+    src: "/vagrant/code/minemeld-core"
+    dest: "{{prototypes_repo_directory}}/minemeld-node-prototypes"
+    state: link
+    owner: minemeld
+    group: minemeld
+  when: vagrant.stat.isdir is defined and vagrant.stat.isdir
+
 - name: minemeld-node-prototypes current link
   file:
     src: "{{prototypes_repo_directory}}/minemeld-node-prototypes/prototypes"
