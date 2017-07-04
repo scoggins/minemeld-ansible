@@ -16,6 +16,28 @@ To install the latest stable release you can:
 If you have forked minemeld-core, minemeld-webui or minemeld-node-prototypes repos and you want to use the forks for development,
 you can edit the corresponding variables in ``local.yml`` file to specify the URL of a fork of the main MineMeld repos.
 
+## Vagrant Build Support
+
+Vagrant build support is still experimental using this should build you a
+ubuntu 16.04 box that symlinks to checked out repos in the code/ directory
+of the ansible script. It requires virtualbox and vagrant to be installed.
+
+To use it do the following:
+
+$ cd minemeld-ansible
+$ mkdir code
+$ git checkout git@github.com:PaloAltoNetworks/minemeld-core.git code/minemeld-core
+$ git checkout git@github.com:PaloAltoNetworks/minemeld-webui.git code/minemeld-webui
+$ git checkout git@github.com:PaloAltoNetworks/minemeld-node-prototypes.git code/minemeld-node-prototypes
+$ vagrant up
+
+Once the install finishes you should be able to browse to https://localhost:16443/ and see minemeld or use:
+
+$ vagrant ssh
+
+To drop to a shell on the ubuntu box.
+
+
 ## Howto on Ubuntu 14.04
 
     $ sudo apt-get update
@@ -82,20 +104,4 @@ Check ``roles/infrastructure/vars`` and ``roles/minemeld/vars`` for examples.
 
 Example: for Ubuntu 14.04 the playbook will look for Ubuntu-14.04.yml, then for Ubuntu-14.yml and then for Ubuntu.yml
 
-
-## Vagrant Build Support
-
-Vagrant build support is still experimental. To use it do the following:
-
-$ mkdir code
-$ git checkout git@github.com:PaloAltoNetworks/minemeld-core.git code/minemeld-core
-$ git checkout git@github.com:PaloAltoNetworks/minemeld-webui.git code/minemeld-webui
-$ git checkout git@github.com:PaloAltoNetworks/minemeld-node-prototypes.git code/minemeld-node-prototypes
-$ vagrant up
-
-Once the install finishes you should be able to browse to https://localhost:16443/ and see minemeld or use:
-
-$ vagrant ssh
-
-To drop to a shell on the ubuntu box.
 
