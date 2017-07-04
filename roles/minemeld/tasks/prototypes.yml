@@ -8,7 +8,7 @@
 
 - name: minemeld-node-prototypes repo symlink
   file:
-    src: "/vagrant/code/minemeld-core"
+    src: "/vagrant/code/minemeld-node-prototypes"
     dest: "{{prototypes_repo_directory}}/minemeld-node-prototypes"
     state: link
     owner: minemeld
