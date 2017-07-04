@@ -81,3 +81,21 @@ Check ``roles/infrastructure/vars`` and ``roles/minemeld/vars`` for examples.
 - ``{{ ansible_distribution }}.yml``
 
 Example: for Ubuntu 14.04 the playbook will look for Ubuntu-14.04.yml, then for Ubuntu-14.yml and then for Ubuntu.yml
+
+
+## Vagrant Build Support
+
+Vagrant build support is still experimental. To use it do the following:
+
+$ mkdir code
+$ git checkout git@github.com:PaloAltoNetworks/minemeld-core.git code/minemeld-core
+$ git checkout git@github.com:PaloAltoNetworks/minemeld-webui.git code/minemeld-webui
+$ git checkout git@github.com:PaloAltoNetworks/minemeld-node-prototypes.git code/minemeld-node-prototypes
+$ vagrant up
+
+Once the install finishes you should be able to browse to https://localhost:16443/ and see minemeld or use:
+
+$ vagrant ssh
+
+To drop to a shell on the ubuntu box.
+
