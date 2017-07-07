@@ -8,12 +8,12 @@
     minemeld_version: develop
     file_permissions: 'u=rwX,g=rwX,o=rX'
   # uncomment the following to install stable
-  # minemeld_version: master
+  #  minemeld_version: master
   # group_permissions: 'u=rwX,g=rX,o=rX'
   # remove comment to set custom repositories
-  # core_repo: "https://github.com/jtschichold/minemeld-core.git"
-  # prototype_repo: "https://github.com/jtschichold/minemeld-node-prototypes.git"
-  # webui_repo: "https://github/jtschichold/minemeld-webui.git"
+    core_repo: "https://github.com/scoggins/minemeld-core.git"
+    prototype_repo: "https://github.com/scoggins/minemeld-node-prototypes.git"
+    webui_repo: "https://github.com/scoggins/minemeld-webui.git"
 
   pre_tasks:
     - name: "Check for Vagrant"

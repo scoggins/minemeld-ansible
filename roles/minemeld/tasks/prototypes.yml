@@ -6,6 +6,11 @@
     version: "{{minemeld_version}}"
   when: vagrant.stat.exists == False
 
+- name: Create minemeld prototypes directory
+  file:
+    path: "{{prototypes_repo_directory}}"
+    state: directory
+  when: vagrant.stat.isdir is defined and vagrant.stat.isdir
 - name: minemeld-node-prototypes repo symlink
   file:
     src: "/vagrant/code/minemeld-node-prototypes"
