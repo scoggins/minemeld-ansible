@@ -1,0 +1,18 @@
+# packages for the servers
+infrastructure_packages:
+  - redis
+  - collectd
+  - collectd-rrdtool
+  - mesa-libEGL
+  - mesa-libGL
+  - nginx
+  - python2-pip.noarch
+  - python-devel
+
+infrastructure_include: OracleLinux-7
+
+# services
+rabbitmq_server_service: rabbitmq-server
+redis_server_service: redis
+collectd_service: collectd
+nginx_service: nginx
