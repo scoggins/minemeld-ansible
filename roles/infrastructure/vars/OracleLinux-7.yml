@@ -7,6 +7,7 @@ infrastructure_packages:
   - mesa-libGL
   - nginx
   - python2-pip.noarch
+  - python-devel
 
 infrastructure_include: OracleLinux-7
 
