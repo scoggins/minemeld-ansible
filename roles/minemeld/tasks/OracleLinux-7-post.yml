@@ -1,5 +1,3 @@
-- name: enable nginx connections to upstream
-  command: setsebool -P httpd_can_network_connect 1
 - name: nginx certificate
   copy:
     force: no
@@ -29,8 +27,6 @@
     owner: root
     group: root
     mode: 0600
-- name: load selinux collectd policy
-  command: semodule -i /tmp/mmcollectd.pp
 - name: collectd config
   template:
     src: collectd.centos7.conf.j2
